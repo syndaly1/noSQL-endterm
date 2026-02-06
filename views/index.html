@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ReadieGreedy: Fantasy Book Library</title>
+
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header class="top-nav">
+  <div class="nav-inner">
+    <div class="nav-left">
+      <a class="brand" href="/">readiegreedy</a>
+
+      <a class="nav-link" href="/books">My Books</a>
+      <a class="nav-link" href="/explore">Explore</a>
+
+      <form class="nav-search" action="#" method="GET">
+        <input class="nav-search-input" type="search" placeholder="Search" aria-label="Search" />
+        <button class="nav-search-btn" type="submit" aria-label="Search">🔎</button>
+      </form>
+    </div>
+
+    <div class="nav-right">
+      <a class="btn btn--tiny btn--ghost" id="loginLink" href="/login">Log in</a>
+      <a class="btn btn--tiny" id="signupLink" href="/signup">Sign up</a>
+      <button class="btn btn--tiny btn--ghost hidden" id="logoutBtn" type="button">Log out</button>
+
+      <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">
+        <span class="menu-icon">☰</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="menu" id="menu" aria-hidden="true">
+    <div class="menu-grid">
+      <div class="menu-col">
+        <div class="menu-title">Browse</div>
+        <a class="menu-link" href="/books">Catalog</a>
+        <a class="menu-link" href="/explore">Explore</a>
+        <a class="menu-link" href="/about">About</a>
+        <a class="menu-link" href="/contact">Contact</a>
+      </div>
+
+      <div class="menu-col">
+        <div class="menu-title">Contribute</div>
+        <a class="menu-link" href="/books#add">Add a Book</a>
+      </div>
+
+      <div class="menu-col">
+        <div class="menu-title">Help</div>
+        <a class="menu-link" href="/contact">Help & Support</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+
+  <section class="card start-here">
+    <h2>Start here</h2>
+    <p class="muted-text" style="line-height:1.75">
+      This library is built for browsing: open the catalog, filter by mood, sort by rating,
+      and add your own titles. The collection lives in a database, and the UI reads it through a real API.
+      Not a “pretty static page”, but a real working application.
+    </p>
+
+    <div class="home-cta-row">
+      <a class="btn" href="/books">Open Catalog</a>
+      <a class="btn btn--ghost" href="/contact">Suggest a book</a>
+    </div>
+  </section>
+
+  <section class="grid home-grid">
+    <article class="card home-card">
+      <h2>Epic Sagas</h2>
+      <p class="muted-text">
+        Game of Thrones · The Way of Kings · Lord of the Rings
+      </p>
+      <a class="btn btn--tiny" href="/books?tag=epic">Explore</a>
+    </article>
+
+    <article class="card home-card">
+      <h2>Dark Fantasy</h2>
+      <p class="muted-text">
+        The Witcher · Prince of Thorns · The Poppy War
+      </p>
+      <a class="btn btn--tiny" href="/books?tag=dark">Explore</a>
+    </article>
+
+    <article class="card home-card">
+      <h2>Heists & Magic</h2>
+      <p class="muted-text">
+        Six of Crows · Mistborn · Locke Lamora
+      </p>
+      <a class="btn btn--tiny" href="/books?tag=magic">Explore</a>
+    </article>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+
+    <div class="footer-col">
+      <h4>ReadieGreedy</h4>
+      <a href="/about">About</a>
+      <a href="/contact">Contact</a>
+      <a href="#">Terms of Service</a>
+    </div>
+
+    <div class="footer-col">
+      <h4>Discover</h4>
+      <a href="/">Home</a>
+      <a href="/books">Books</a>
+      <a href="/explore">Explore</a>
+    </div>
+
+    <div class="footer-col">
+      <h4>Help</h4>
+      <a href="/contact">Help & Support</a>
+      <a href="/contact#contact-form">Contact Us</a>
+      <a href="/books#add">Add a Book</a>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <span>2026</span>
+  </div>
+</footer>
+
+<script src="/theme.js"></script>
+<script src="/authclient.js"></script>
+<script src="/nav.js"></script>
+
+</body>
+</html>

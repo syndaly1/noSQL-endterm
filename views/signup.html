@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sign up - ReadieGreedy</title>
+
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header class="top-nav">
+  <div class="nav-inner">
+    <div class="nav-left">
+      <a class="brand" href="/">readiegreedy</a>
+      <a class="nav-link" href="/books">Library</a>
+      <a class="nav-link" href="/about">About</a>
+      <a class="nav-link" href="/contact">Contact</a>
+    </div>
+
+    <div class="nav-right">
+      <a class="btn btn--tiny btn--ghost" href="/login">Log in</a>
+      <a class="btn btn--tiny" href="/signup">Sign up</a>
+
+      <button class="menu-btn" id="menuBtn" aria-label="Open menu">
+        <span class="menu-icon">☰</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="menu" id="menu" aria-hidden="true">
+    <div class="menu-grid">
+      <div class="menu-col">
+        <div class="menu-title">Menu</div>
+        <a class="menu-link" href="/">Home</a>
+        <a class="menu-link" href="/books">Library</a>
+        <a class="menu-link" href="/about">About</a>
+        <a class="menu-link" href="/contact">Contact</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="card" style="max-width:520px;margin:40px auto;">
+    <h1>Sign up</h1>
+    <p class="muted-text">
+      A brand-new identity. For books. Humans are hilarious.
+    </p>
+
+    <form id="authForm" data-mode="signup" class="form">
+      <label>Name</label>
+      <input class="input" name="name" required placeholder="Your name" />
+
+      <label>Email</label>
+      <input class="input" name="email" type="email" required placeholder="you@example.com" />
+
+      <label>Password (min 6)</label>
+      <input class="input" name="password" type="password" required placeholder="••••••••" />
+
+      <button class="btn" type="submit">Create account</button>
+      <div id="authMsg" class="form-msg"></div>
+    </form>
+
+    <div class="hr"></div>
+    <p class="muted-text">
+      Already have an account? <a href="/login">Log in</a>
+    </p>
+  </section>
+</main>
+
+<script src="/theme.js"></script>
+<script src="/authclient.js"></script>
+<script src="/nav.js"></script>
+<script src="/authforms.js"></script>
+
+</body>
+</html>

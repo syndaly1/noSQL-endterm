@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact - ReadieGreedy</title>
+
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header class="top-nav">
+  <div class="nav-inner">
+    <div class="nav-left">
+      <a class="brand" href="/">readiegreedy</a>
+
+      <a class="nav-link" href="/books">My Books</a>
+      <a class="nav-link" href="/explore">Explore</a>
+
+      <form class="nav-search" action="#" method="GET">
+        <input class="nav-search-input" type="search" placeholder="Search" aria-label="Search" />
+        <button class="nav-search-btn" type="submit" aria-label="Search">🔎</button>
+      </form>
+    </div>
+
+    <div class="nav-right">
+      <a class="btn btn--tiny btn--ghost" id="loginLink" href="/login">Log in</a>
+      <a class="btn btn--tiny" id="signupLink" href="/signup">Sign up</a>
+      <button class="btn btn--tiny btn--ghost hidden" id="logoutBtn" type="button">Log out</button>
+
+      <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">
+        <span class="menu-icon">☰</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="menu" id="menu" aria-hidden="true">
+    <div class="menu-grid">
+      <div class="menu-col">
+        <div class="menu-title">Browse</div>
+        <a class="menu-link" href="/books">Catalog</a>
+        <a class="menu-link" href="/explore">Explore</a>
+        <a class="menu-link" href="/about">About</a>
+        <a class="menu-link" href="/contact">Contact</a>
+      </div>
+
+      <div class="menu-col">
+        <div class="menu-title">Contribute</div>
+        <a class="menu-link" href="/books#add">Add a Book</a>
+      </div>
+
+      <div class="menu-col">
+        <div class="menu-title">Help</div>
+        <a class="menu-link" href="/contact">Help & Support</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+
+  <section class="hero hero--compact">
+    <h1>Help &amp; Support</h1>
+    <p class="tagline">Answers first. Panic later.</p>
+  </section>
+
+  <section class="card">
+    <h2>FAQ</h2>
+    <p class="muted-text" style="margin-bottom:14px;">
+      Basic questions about how the library works.
+    </p>
+
+    <div class="faq-grid">
+      <a class="faq-item" href="/about">
+        <div class="faq-title">What is ReadieGreedy?</div>
+        <div class="faq-desc">Learn what this project is and how it works.</div>
+      </a>
+
+      <a class="faq-item" href="/books">
+        <div class="faq-title">How to browse books</div>
+        <div class="faq-desc">Searching, filtering, and sorting the catalog.</div>
+      </a>
+
+      <a class="faq-item" href="/login">
+        <div class="faq-title">Accounts & Login</div>
+        <div class="faq-desc">Why you need an account and how authentication works.</div>
+      </a>
+
+      <a class="faq-item" href="/books#add">
+        <div class="faq-title">Adding new books</div>
+        <div class="faq-desc">How users can add books to the database.</div>
+      </a>
+    </div>
+  </section>
+
+  <section class="card" id="contact-form">
+    <h2>Contact Form</h2>
+    <p class="muted-text" style="margin-bottom:14px;">
+      Didn’t find what you needed? Send a message.
+    </p>
+
+    <form class="form" action="/contact" method="POST">
+      <label>Name</label>
+      <input type="text" name="name" placeholder="Your name" required />
+
+      <label>Email</label>
+      <input type="email" name="email" placeholder="you@example.com" required />
+
+      <label>Message</label>
+      <textarea name="message" rows="6" placeholder="Write your message..." required></textarea>
+
+      <button class="btn" type="submit">Send Message</button>
+    </form>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+
+    <div class="footer-col">
+      <h4>ReadieGreedy</h4>
+      <a href="/about">About</a>
+      <a href="/contact">Contact</a>
+      <a href="#">Terms of Service</a>
+    </div>
+
+    <div class="footer-col">
+      <h4>Discover</h4>
+      <a href="/">Home</a>
+      <a href="/books">Books</a>
+      <a href="/explore">Explore</a>
+    </div>
+
+    <div class="footer-col">
+      <h4>Help</h4>
+      <a href="/contact">Help & Support</a>
+      <a href="/contact#contact-form">Contact Us</a>
+      <a href="/books#add">Add a Book</a>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <span>2026</span>
+  </div>
+</footer>
+
+<script src="/theme.js"></script>
+<script src="/authclient.js"></script>
+<script src="/nav.js"></script>
+
+</body>
+</html>
