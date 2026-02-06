@@ -184,7 +184,7 @@ node server.js
 ## Environment variables (.env):
 ```bash
 PORT=3000
-MONGO_URI=your_mongodb_uri
+MONGO_URI=mongodb://127.0.0.1:27017
 MONGODB_DB=readieg_library
 SESSION_SECRET=super_secret_key
 ```
