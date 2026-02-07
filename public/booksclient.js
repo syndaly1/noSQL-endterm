@@ -96,6 +96,7 @@ function renderGrid(items) {
           <div class="book-tags">${tags}</div>
           <div class="book-actions">
             <button class="btn btn--tiny" data-action="details">Details</button>
+            <button class="btn btn--tiny" data-action="edit">Edit</button>
             <button class="btn btn--tiny" data-action="favorite">❤️</button>
             <button class="btn btn--tiny btn--danger" data-action="delete">Delete</button>
           </div>
@@ -112,8 +113,9 @@ function renderGrid(items) {
 
       const id = card.dataset.id;
       if (action === "details") return showDetails(id);
+      if (action === "edit") return openEditForm(id);
       if (action === "delete") return deleteBook(id);
-      if (action === "favorite") return addToFavorites(id, e.target);
+      if (action === "favorite") return toggleFavorite(id, e.target);
     });
   });
 }
@@ -138,6 +140,7 @@ async function showDetails(id) {
 
 async function deleteBook(id) {
   if (!confirm("Delete this book?")) return;
+
   const res = await fetch(`/api/books/${id}`, {
     method: "DELETE",
     credentials: "include",
@@ -149,17 +152,62 @@ async function deleteBook(id) {
   await loadBooks();
 }
 
-async function addToFavorites(bookId, btn) {
+async function toggleFavorite(bookId, btn) {
+  const added = btn.textContent === "💛";
+
   const res = await fetch(`/api/favorites/${bookId}`, {
-    method: "POST",
+    method: added ? "DELETE" : "POST",
     credentials: "include",
   });
 
   if (res.status === 401) return requireLogin();
-  if (!res.ok) return alert("Failed to add to favorites");
+  if (!res.ok) return alert("Favorites action failed");
 
-  btn.textContent = "💛";
-  btn.disabled = true;
+  btn.textContent = added ? "❤️" : "💛";
+}
+
+async function openEditForm(id) {
+  const res = await fetch(`/api/books/${id}`);
+  const b = await res.json();
+  if (!res.ok) return alert("Failed to load book");
+
+  openModal(`
+    <h2>Edit Book</h2>
+    <form id="editForm" class="form">
+      <input name="title" value="${esc(b.title)}" required />
+      <input name="author" value="${esc(b.author)}" required />
+      <input name="year" type="number" value="${b.year ?? ""}" />
+      <input name="rating" type="number" step="0.1" value="${b.rating ?? ""}" />
+      <input name="tags" value="${(b.tags || []).join(", ")}" />
+      <textarea name="description">${esc(b.description || "")}</textarea>
+      <button class="btn">Save</button>
+    </form>
+  `);
+
+  document.getElementById("editForm").addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const fd = new FormData(e.target);
+    const payload = Object.fromEntries(fd.entries());
+
+    payload.year = payload.year ? Number(payload.year) : null;
+    payload.rating = payload.rating ? Number(payload.rating) : null;
+    payload.tags = payload.tags
+      ? payload.tags.split(",").map(s => s.trim()).filter(Boolean)
+      : [];
+
+    const r = await fetch(`/api/books/${id}`, {
+      method: "PUT",
+      credentials: "include",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    });
+
+    if (r.status === 401) return requireLogin();
+    if (!r.ok) return alert("Update failed");
+
+    hideModal();
+    await loadBooks();
+  });
 }
 
 reloadBtn.addEventListener("click", loadBooks);
