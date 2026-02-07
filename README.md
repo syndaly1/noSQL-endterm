@@ -113,7 +113,7 @@ Ensures authenticated access to protected routes
 |------|------------------------|--------------------------------|
 | POST | /api/favorites/:bookId | Add book to favorites          |
 | GET  | /api/favorites         | Get user favorites             |
-| DELETE | /api/favorites/:id   | Remove from favorites          |
+| DELETE | /api/favorites/:bookId   | Remove from favorites          |
 
 > Note: Authentication endpoints operate via POST requests.
 > Their correct functionality is confirmed by the creation of documents
